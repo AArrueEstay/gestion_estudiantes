@@ -37,15 +37,22 @@ def guardar_estudiantes(estudiantes):
 
 #Funcion para agregar nuevo estudiante al sistema
 def agregar_estudiante(estudiantes):
-    rut = input("RUT: ")
+    rut = input("RUT: ").strip().upper()
     #Bloque que revisa que rut no este repetido
     if not validar_rut(rut, estudiantes):
         print("RUT inválido o duplicado.")
         return
     
-    nombre = input("Nombre: ")
+    #Validación de nombre no vacío
+    while True:
+        nombre = input("Nombre: ").strip()
+        if nombre:
+            break
+        else:
+            print("El nombre no puede estar vacío.")
+    
     edad = validar_edad()
-    carrera = input("Carrera: ")
+    carrera = input("Carrera: ").strip()
     
     #Diccionario
     estudiante = {

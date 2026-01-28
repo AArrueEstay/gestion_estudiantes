@@ -3,8 +3,9 @@ def validar_rut(rut, estudiantes):
     if not rut:
         return False
     
+    rut = rut.strip().upper()
     #Conjunto de rut registrados para evitar duplicados
-    ruts_existentes = {e["rut"] for e in estudiantes}
+    ruts_existentes = {e["rut"].upper() for e in estudiantes}
     
     return rut not in ruts_existentes
 
